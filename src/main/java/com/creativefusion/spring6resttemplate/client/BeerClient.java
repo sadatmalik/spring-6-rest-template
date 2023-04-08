@@ -10,6 +10,7 @@ import java.util.UUID;
  * @author sm@creativefusion.net
  */
 public interface BeerClient {
+    BeerDTO createBeer(BeerDTO newDto);
     Page<BeerDTO> listBeers();
     Page<BeerDTO> listBeers(String beerName, BeerStyle beerStyle, Boolean showInventory, Integer pageNumber,
                             Integer pageSize);
