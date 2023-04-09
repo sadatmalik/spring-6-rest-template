@@ -3,7 +3,6 @@ package com.creativefusion.spring6resttemplate.client;
 import com.creativefusion.spring6resttemplate.model.BeerDTO;
 import com.creativefusion.spring6resttemplate.model.BeerDTOPageImpl;
 import com.creativefusion.spring6resttemplate.model.BeerStyle;
-import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.data.domain.Page;
@@ -13,7 +12,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -74,21 +72,21 @@ public class BeerClientImpl implements BeerClient {
             uriComponentsBuilder.queryParam("pageSize", beerStyle);
         }
 
-        ResponseEntity<String> stringResponse =
-                restTemplate.getForEntity(uriComponentsBuilder.toUriString() , String.class);
-
-        ResponseEntity<Map> mapResponse =
-                restTemplate.getForEntity(uriComponentsBuilder.toUriString(), Map.class);
-
-        System.out.println(mapResponse.getBody());
-
-        ResponseEntity<JsonNode> jsonResponse =
-                restTemplate.getForEntity(uriComponentsBuilder.toUriString(), JsonNode.class);
-
-        jsonResponse.getBody().findPath("content")
-                .elements().forEachRemaining(node -> {
-                    System.out.println(node.get("beerName").asText());
-                });
+//        ResponseEntity<String> stringResponse =
+//                restTemplate.getForEntity(uriComponentsBuilder.toUriString() , String.class);
+//
+//        ResponseEntity<Map> mapResponse =
+//                restTemplate.getForEntity(uriComponentsBuilder.toUriString(), Map.class);
+//
+//        System.out.println(mapResponse.getBody());
+//
+//        ResponseEntity<JsonNode> jsonResponse =
+//                restTemplate.getForEntity(uriComponentsBuilder.toUriString(), JsonNode.class);
+//
+//        jsonResponse.getBody().findPath("content")
+//                .elements().forEachRemaining(node -> {
+//                    System.out.println(node.get("beerName").asText());
+//                });
 
         ResponseEntity<BeerDTOPageImpl> dtoPageResponse =
                 restTemplate.getForEntity(uriComponentsBuilder.toUriString() , BeerDTOPageImpl.class);
